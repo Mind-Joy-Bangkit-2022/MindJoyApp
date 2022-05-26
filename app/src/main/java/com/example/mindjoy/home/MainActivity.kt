@@ -1,7 +1,8 @@
-package com.example.mindjoy
+package com.example.mindjoy.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mindjoy.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
