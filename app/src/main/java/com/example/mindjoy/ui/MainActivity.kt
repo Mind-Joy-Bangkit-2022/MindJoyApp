@@ -1,4 +1,4 @@
-package com.example.mindjoy.home
+package com.example.mindjoy.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
