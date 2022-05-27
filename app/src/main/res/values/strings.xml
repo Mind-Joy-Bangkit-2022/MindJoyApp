@@ -2,4 +2,12 @@
     <string name="app_name">MindJoy</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mindjoylogo">MindjoyLogo</string>
+    <string name="mindjoytextlogo">MindjoyTextLogo</string>
+    <string name="btnsignup">Sign Up</string>
+    <string name="btnlogin">Log in</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="tv_password">Password</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="tv_username">Username</string>
 </resources>
