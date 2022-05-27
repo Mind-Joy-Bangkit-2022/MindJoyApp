@@ -100,19 +100,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card_tv_mental_health" />
 
-            <Button
+            <com.example.mindjoy.customview.ButtonCheckNow
                 android:id="@+id/btn_check_mental"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Check Now"
-                android:fontFamily="@font/poppins_semibold"
-                android:backgroundTint="@color/white"
-                android:paddingRight="20dp"
-                android:paddingLeft="20dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Check Now"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_tv_mental_status" />
+                app:layout_constraintTop_toBottomOf="@+id/card_tv_mental_status"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <ImageView
                 android:layout_width="70dp"
@@ -133,9 +136,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -195,19 +196,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card_tv_expresion" />
 
-            <Button
+            <com.example.mindjoy.customview.ButtonCheckNow
                 android:id="@+id/btn_check_expression"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Check Now"
-                android:fontFamily="@font/poppins_semibold"
-                android:backgroundTint="@color/white"
-                android:paddingRight="20dp"
-                android:paddingLeft="20dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Check Now"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_tv_expresion_status" />
+                app:layout_constraintTop_toBottomOf="@+id/card_tv_expresion_status"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <ImageView
                 android:layout_width="70dp"
@@ -228,11 +232,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
