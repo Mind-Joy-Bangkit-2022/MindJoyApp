@@ -10,4 +10,8 @@
     <string name="tv_password">Password</string>
     <string name="enter_your_username">Enter your username</string>
     <string name="tv_username">Username</string>
+    <string name="sign_up_title">Sign Up to MindJoy</string>
+    <string name="tv_name">Name</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="tv_have_account">Already have account? Sing in</string>
 </resources>
