@@ -1,8 +1,11 @@
 package com.example.mindjoy.ui
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowInsets
+import android.view.WindowManager
 
 import androidx.fragment.app.Fragment
 import com.example.mindjoy.R
