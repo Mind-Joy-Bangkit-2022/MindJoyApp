@@ -52,9 +52,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        app:hintEnabled="false">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.example.mindjoy.customview.ClearImgEditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,9 +97,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_username"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        app:hintEnabled="false">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.example.mindjoy.customview.ClearImgEditText
             android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -139,15 +141,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_password"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        app:passwordToggleContentDescription="password"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/teal_700"
+        app:helperText="Required*"
+        app:helperTextTextColor="#fc0303"
+        app:hintEnabled="false">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.example.mindjoy.customview.PasswordEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
+            android:hint="@string/enter_your_password"
             android:inputType="textPassword"
-            android:hint="@string/enter_your_password" />
+            android:maxLines="1" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <android.widget.Button
@@ -157,7 +167,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/custom_button"
+        android:background="@drawable/custom_button_green"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/btnsignup"
         android:textAllCaps="false"
