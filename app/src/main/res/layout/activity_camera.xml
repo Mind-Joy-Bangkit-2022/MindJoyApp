@@ -47,6 +47,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+        android:id="@+id/ic_switch_camera"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="50dp"
@@ -64,6 +65,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/capture_image"
         app:layout_constraintEnd_toStartOf="@+id/capture_image"
         app:layout_constraintTop_toTopOf="@+id/capture_image" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
