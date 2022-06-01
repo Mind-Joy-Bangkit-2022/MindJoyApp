@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.aboutus.AboutUsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
+
+        <ImageView
+            android:id="@+id/mindjoylogo"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/mindjoylogo"
+            android:src="@drawable/mindjoy_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/minjoytext"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/mindjoytextlogo"
+            android:src="@drawable/mindjoy_text"
+            app:layout_constraintEnd_toEndOf="@+id/mindjoylogo"
+            app:layout_constraintStart_toStartOf="@+id/mindjoylogo"
+            app:layout_constraintTop_toBottomOf="@+id/mindjoylogo" />
+
+        <TextView
+            android:id="@+id/tv_nizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Nizar Baihaqi"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minjoytext" />
+
+        <TextView
+            android:id="@+id/tv_nizar_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="M2258F2253"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_nizar"
+            app:layout_constraintStart_toStartOf="@+id/tv_nizar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nizar" />
+
+        <TextView
+            android:id="@+id/tv_navira"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Navira Rahma Salsabila"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nizar_id" />
+
+        <TextView
+            android:id="@+id/tv_navira_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="M2258F2259"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_navira"
+            app:layout_constraintStart_toStartOf="@+id/tv_navira"
+            app:layout_constraintTop_toBottomOf="@+id/tv_navira" />
+
+        <TextView
+            android:id="@+id/tv_rara"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Nurul Shafirah Ramadhani"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_navira_id" />
+
+        <TextView
+            android:id="@+id/tv_rara_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="C2335F2880"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_rara"
+            app:layout_constraintStart_toStartOf="@+id/tv_rara"
+            app:layout_constraintTop_toBottomOf="@+id/tv_rara" />
+
+        <TextView
+            android:id="@+id/tv_nur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Nurfaridah"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_rara_id" />
+
+        <TextView
+            android:id="@+id/tv_nur_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="C2335J2879"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_nur"
+            app:layout_constraintStart_toStartOf="@+id/tv_nur"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nur" />
+
+        <TextView
+            android:id="@+id/tv_dino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Aldino Reisnanda"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nur_id" />
+
+        <TextView
+            android:id="@+id/tv_dino_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="A2011F1163"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_dino"
+            app:layout_constraintStart_toStartOf="@+id/tv_dino"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dino" />
+
+        <TextView
+            android:id="@+id/tv_taufik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Muhammad Taufik Hidayat"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dino_id" />
+
+        <TextView
+            android:id="@+id/tv_taufik_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="A2258J2256"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_taufik"
+            app:layout_constraintStart_toStartOf="@+id/tv_taufik"
+            app:layout_constraintTop_toBottomOf="@+id/tv_taufik" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
