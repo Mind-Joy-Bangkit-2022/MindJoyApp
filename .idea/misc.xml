@@ -3,24 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/drawable/bg_button_checknow.xml" value="0.239" />
         <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/drawable/custom_button.xml" value="0.2985" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/drawable/custom_button_hollow.xml" value="0.3555" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/drawable/ic_close_black_24dp.xml" value="0.3455" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/drawable/ic_error.xml" value="0.2985" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/drawable/settings_icon.xml" value="0.2985" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/drawable/transparent_selector.xml" value="0.3555" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/layout/activity_main.xml" value="0.3541666666666667" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/layout/activity_question.xml" value="0.17" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/layout/fragment_home.xml" value="0.3541666666666667" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/layout/fragment_settings.xml" value="0.3541666666666667" />
-        <entry key="..\:/BANGKIT YOHOHOHOHO/MindJoy/MindJoyApp/app/src/main/res/layout/list_answer.xml" value="0.3541666666666667" />
-        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project/app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.1915" />
-        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project/app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project/app/src/main/res/menu/bottom_menu.xml" value="0.21481481481481482" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project/app/src/main/res/drawable/bg_button_checknow.xml" value="0.1915" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.2195" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/drawable/custom_button_hollow.xml" value="0.166" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/drawable/ic_baseline_dark_mode_24.xml" value="0.1555" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/drawable/ic_gallery.xml" value="0.1555" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/drawable/ic_switch_camera.xml" value="0.1555" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/drawable/switch_color.xml" value="0.1" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/drawable/switch_thumb_color.xml" value="0.2195" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout-land/activity_camera.xml" value="0.264" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout-land/activity_question.xml" value="0.1" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/activity_camera.xml" value="0.264" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/activity_camera_result.xml" value="0.264" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/activity_main.xml" value="0.192481884057971" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/activity_question.xml" value="0.176" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/activity_register.xml" value="0.4" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/menu/bottom_menu.xml" value="0.25" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/TAUFIK/Documents/Project Android Studio/Capstone/Project2/MindJoyApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>
