@@ -1,5 +1,6 @@
 package com.example.mindjoy.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,9 @@ import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Button
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 
 import androidx.fragment.app.Fragment
 import com.example.mindjoy.R
