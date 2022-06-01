@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.FragmentHomeBinding
+import com.example.mindjoy.ui.camera.CameraActivity
 import com.example.mindjoy.ui.questions.QuestionActivity
 
 class HomeFragment : Fragment() {
@@ -17,17 +18,19 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val binding = FragmentHomeBinding.inflate(layoutInflater)
 
-        //Hapus ini, buat tes sementara navigasi aja
-        val bind = FragmentHomeBinding.inflate(layoutInflater)
-        bind.btnCheckMental.setOnClickListener {
+        binding.btnCheckMental.setOnClickListener {
             val intent = Intent (this@HomeFragment.requireContext(), QuestionActivity::class.java)
             startActivity(intent)
         }
-        //Hapus ini, buat tes sementara navigasi aja
 
+        binding.btnCheckExpression.setOnClickListener {
+            val intent = Intent(this.requireContext(), CameraActivity::class.java)
+            startActivity(intent)
+        }
 
-        return bind.root
+        return binding.root
     }
 
 
