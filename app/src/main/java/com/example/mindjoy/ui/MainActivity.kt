@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Button
 
 import androidx.fragment.app.Fragment
 import com.example.mindjoy.R
@@ -13,12 +16,12 @@ import com.example.mindjoy.databinding.ActivityMainBinding
 import com.example.mindjoy.databinding.FragmentHomeBinding
 import com.example.mindjoy.ui.camera.CameraActivity
 import com.example.mindjoy.ui.home.HomeFragment
+import com.example.mindjoy.ui.questions.QuestionActivity
 import com.example.mindjoy.ui.settings.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
     private val homeFragment = HomeFragment()
     private val settingsFragment = SettingsFragment()
 

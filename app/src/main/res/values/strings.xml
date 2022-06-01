@@ -14,4 +14,120 @@
     <string name="tv_name">Name</string>
     <string name="enter_your_name">Enter your name</string>
     <string name="tv_have_account">Already have account? Sign in</string>
+    <string name="back_press"><![CDATA[< Back]]></string>
+
+
+    <string name="question_1">Gender</string>
+    <string name="question_2">Are you above 30 years of age?</string>
+    <string name="question_3">How are you feeling today?</string>
+    <string name="question_4">Is your sadness momentarily or has it been constant for a long time?</string>
+    <string name="question_5">At what time of the day are you extremely low?</string>
+    <string name="question_6">How frequently have you had little pleasure or interest in the activities you usually enjoy?</string>
+    <string name="question_7">How confident you have been feeling in your capabilities recently.</string>
+    <string name="question_8">Describe how ‘supported’ you feel by others around you – your friends, family, or otherwise.</string>
+    <string name="question_9">How frequently have you been doing things that mean something to you or your life?</string>
+    <string name="question_10">How easy is it for you to take medical leave for a mental health condition?</string>
+    <string name="question_11">How often do you make use of substance abuse(e.g. smoking, alcohol)?</string>
+    <string name="question_12">How many hours do you spend per day on watching mobile phone, laptop, computer, television, etc?</string>
+    <string name="question_13">If sad, how likely are you to take an appointment with a psychologist or a counsellor for your current mental state?</string>
+    <string name="question_14">How often do you get offended or angry or start crying?</string>
+    <string name="question_15">How likely do you feel yourself vulnerable or lonely?</string>
+    <string name="question_16">How comfortable are you in talking about your mental health?</string>
+    <string name="btn_submit_survey">Submit</string>
+
+
+    <string-array name="answer1">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Prefer Not To Say</item>
+    </string-array>
+
+    <string-array name="answer2">
+        <item>No</item>
+        <item>Yes</item>
+    </string-array>
+
+    <string-array name="answer3">
+        <item>Fine</item>
+        <item>Good</item>
+        <item>Sad</item>
+        <item>Depressed</item>
+    </string-array>
+
+    <string-array name="answer4">
+        <item>For Some Time</item>
+        <item>Significant Time</item>
+        <item>Not Sad</item>
+        <item>Long Time</item>
+    </string-array>
+
+    <string-array name="answer5">
+        <item>Evening</item>
+        <item>Morning</item>
+        <item>Afternoon</item>
+    </string-array>
+
+    <string-array name="answer6">
+        <item>Very Often</item>
+        <item>Sometimes</item>
+        <item>Never</item>
+        <item>Often</item>
+    </string-array>
+
+    <string-array name="answer7">
+
+    </string-array>
+
+    <string-array name="answer8">
+        <item>Highly Supportive</item>
+        <item>Little Bit</item>
+        <item>Satisfactory</item>
+        <item>Not at all</item>
+    </string-array>
+
+    <string-array name="answer9">
+        <item>Sometimes</item>
+        <item>Never</item>
+        <item>Often</item>
+        <item>Very Often</item>
+    </string-array>
+
+    <string-array name="answer10">
+        <item>Not so easy</item>
+        <item>Very easy</item>
+        <item>Difficult</item>
+        <item>Easy</item>
+    </string-array>
+
+    <string-array name="answer11">
+        <item>Never</item>
+        <item>Often</item>
+        <item>Sometimes</item>
+        <item>Very Often</item>
+    </string-array>
+
+    <string-array name="answer12">
+        <item>2–5 hours</item>
+        <item>More than
+            10 hours</item>
+        <item>5 – 10 hours</item>
+        <item>1–2 hours</item>
+    </string-array>
+
+    <string-array name="answer13">
+
+    </string-array>
+
+    <string-array name="answer14">
+
+    </string-array>
+
+    <string-array name="answer15">
+
+    </string-array>
+
+    <string-array name="answer16">
+
+    </string-array>
+
 </resources>
