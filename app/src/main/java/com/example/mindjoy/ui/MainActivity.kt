@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.ActivityMainBinding
 import com.example.mindjoy.databinding.FragmentHomeBinding
+import com.example.mindjoy.databinding.FragmentSettingsBinding
+import com.example.mindjoy.ui.aboutus.AboutUsFragment
 import com.example.mindjoy.ui.camera.CameraActivity
 import com.example.mindjoy.ui.home.HomeFragment
 import com.example.mindjoy.ui.questions.QuestionActivity
@@ -26,12 +28,15 @@ import com.example.mindjoy.ui.settings.SettingsFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var settingBinding: FragmentSettingsBinding
     private val homeFragment = HomeFragment()
     private val settingsFragment = SettingsFragment()
+    private val aboutUsFragment = AboutUsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        settingBinding = FragmentSettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(homeFragment)
 
@@ -46,6 +51,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.ic_settings -> replaceFragment(settingsFragment)
             }
             true
+        }
+
+        settingBinding.tvAboutUs.setOnClickListener {
+            replaceFragment(aboutUsFragment)
         }
     }
 
