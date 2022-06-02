@@ -26,6 +26,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.camera.CameraResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.questions.QuestionActivity"
             android:exported="false" />
         <activity
