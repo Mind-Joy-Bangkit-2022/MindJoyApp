@@ -23,16 +23,31 @@
     <string name="question_4">Is your sadness momentarily or has it been constant for a long time?</string>
     <string name="question_5">At what time of the day are you extremely low?</string>
     <string name="question_6">How frequently have you had little pleasure or interest in the activities you usually enjoy?</string>
-    <string name="question_7">How confident you have been feeling in your capabilities recently.</string>
+    <string name="question_7">
+        How confident you have been feeling in your capabilities recently?
+        \n[1]Not at all [2]Slightly [3]Moderately [4]Very [5]Extremely
+    </string>
     <string name="question_8">Describe how ‘supported’ you feel by others around you – your friends, family, or otherwise.</string>
     <string name="question_9">How frequently have you been doing things that mean something to you or your life?</string>
     <string name="question_10">How easy is it for you to take medical leave for a mental health condition?</string>
     <string name="question_11">How often do you make use of substance abuse(e.g. smoking, alcohol)?</string>
     <string name="question_12">How many hours do you spend per day on watching mobile phone, laptop, computer, television, etc?</string>
-    <string name="question_13">If sad, how likely are you to take an appointment with a psychologist or a counsellor for your current mental state?</string>
-    <string name="question_14">How often do you get offended or angry or start crying?</string>
-    <string name="question_15">How likely do you feel yourself vulnerable or lonely?</string>
-    <string name="question_16">How comfortable are you in talking about your mental health?</string>
+    <string name="question_13">
+        If sad, how likely are you to take an appointment with a psychologist or a counsellor for your current mental state?
+        \n[1]Not at all [2]Slightly [3]Moderately [4]Very [5]Extremely
+    </string>
+    <string name="question_14">
+        How often do you get offended or angry or start crying?
+        \n[1]Not at all [2]Slightly [3]Moderately [4]Very [5]Extremely
+    </string>
+    <string name="question_15">
+        How likely do you feel yourself vulnerable or lonely?
+        \n[1]Not at all [2]Slightly [3]Moderately [4]Very [5]Extremely
+    </string>
+    <string name="question_16">
+        How comfortable are you in talking about your mental health?
+        \n[1]Not at all [2]Slightly [3]Moderately [4]Very [5]Extremely
+    </string>
     <string name="btn_submit_survey">Submit</string>
 
 
@@ -75,7 +90,11 @@
     </string-array>
 
     <string-array name="answer7">
-
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
     <string-array name="answer8">
@@ -115,19 +134,35 @@
     </string-array>
 
     <string-array name="answer13">
-
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
     <string-array name="answer14">
-
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
     <string-array name="answer15">
-
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
     <string-array name="answer16">
-
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
 </resources>
