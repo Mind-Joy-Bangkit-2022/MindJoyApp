@@ -1,5 +1,6 @@
 package com.example.mindjoy.ui.camera
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -16,9 +17,6 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 
 class CameraResultActivity : AppCompatActivity() {
-    companion object {
-        const val CAMERA_X_RESULT = 200
-    }
 
     private lateinit var binding: ActivityCameraResultBinding
 
@@ -29,29 +27,31 @@ class CameraResultActivity : AppCompatActivity() {
         binding = ActivityCameraResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        launcherIntentCameraX
+        setImage()
+
+        binding.btnRetake.setOnClickListener {
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
-    private val launcherIntentCameraX =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == CAMERA_X_RESULT) {
+    private fun setImage(){
+        val myFile = intent.getSerializableExtra("picture") as File
+        val isBackCamera = intent.getSerializableExtra("isBackCamera") as Boolean
 
-                val myFile = it.data?.getSerializableExtra("picture") as File
-                val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
+        val result = rotateBitmap(
+            BitmapFactory.decodeFile(myFile.path),
+            isBackCamera
+        )
 
-                val result = rotateBitmap(
-                    BitmapFactory.decodeFile(myFile.path),
-                    isBackCamera
-                )
+        val bitmap: Bitmap = result
 
-                val bitmap: Bitmap = result
+        val os: OutputStream = BufferedOutputStream(FileOutputStream(myFile))
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
+        os.close()
 
-                val os: OutputStream = BufferedOutputStream(FileOutputStream(myFile))
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
-                os.close()
-
-                getFile = myFile
-                binding.previewImageView.setImageBitmap(result)
-            }
-        }
+        getFile = myFile
+        binding.previewImageView.setImageBitmap(result)
+    }
 }

@@ -14,6 +14,7 @@
         <ImageView
             android:id="@+id/preview_image_view"
             android:background="@drawable/image_rounded"
+            android:clipToOutline="true"
             android:layout_width="320dp"
             android:layout_height="450dp"
             android:layout_marginTop="50dp"
