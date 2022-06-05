@@ -27,7 +27,8 @@ class CameraResultActivity : AppCompatActivity() {
         binding = ActivityCameraResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setImage()
+//        setImageFromCamera()
+        setImageFromGallery()
 
         binding.btnRetake.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
@@ -36,7 +37,14 @@ class CameraResultActivity : AppCompatActivity() {
         }
     }
 
-    private fun setImage(){
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun setImageFromCamera(){
         val myFile = intent.getSerializableExtra("picture") as File
         val isBackCamera = intent.getSerializableExtra("isBackCamera") as Boolean
 
@@ -53,5 +61,12 @@ class CameraResultActivity : AppCompatActivity() {
 
         getFile = myFile
         binding.previewImageView.setImageBitmap(result)
+    }
+
+    private fun setImageFromGallery(){
+        val selectedImg = intent.getSerializableExtra("file") as Uri
+        val myFile = uriToFile(selectedImg, this)
+        getFile = myFile
+        binding.previewImageView.setImageURI(selectedImg)
     }
 }
