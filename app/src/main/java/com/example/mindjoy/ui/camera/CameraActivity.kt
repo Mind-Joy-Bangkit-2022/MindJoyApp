@@ -3,12 +3,14 @@ package com.example.mindjoy.ui.camera
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -18,17 +20,23 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.ActivityCameraBinding
+import com.example.mindjoy.databinding.ActivityCameraResultBinding
 import com.example.mindjoy.ui.helper.createFile
+import com.example.mindjoy.ui.helper.uriToFile
+import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCameraBinding
+    private lateinit var bindingResult: ActivityCameraResultBinding
     private lateinit var cameraExecutor: ExecutorService
 
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
     private var imageCapture: ImageCapture? = null
+
+    private var getFile: File? = null
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -55,6 +63,7 @@ class CameraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
+        bindingResult = ActivityCameraResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (!allPermissionsGranted()) {
@@ -76,6 +85,10 @@ class CameraActivity : AppCompatActivity() {
 
         binding.captureImage.setOnClickListener {
             takePhoto()
+        }
+
+        binding.gallery.setOnClickListener {
+            startGallery()
         }
 
         binding.cancelCamera.setOnClickListener {
@@ -157,6 +170,24 @@ class CameraActivity : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg: Uri = result.data?.data as Uri
+
+            val intent = Intent(this, CameraResultActivity::class.java)
+            intent.putExtra("file", selectedImg)
+//            startActivity(intent)
+        }
     }
 
     private fun hideSystemUI() {
