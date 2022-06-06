@@ -14,6 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="backgroundColor">
+        <item name="android:background">@color/white</item>
+    </style>
+
     <style name="BottomNavigationViewTextStyle">
         <item name="android:fontFamily">@font/poppins_semibold</item>
     </style>
@@ -26,9 +30,21 @@
         </item>
     </style>
 
+    <style name="bottomNavStyle">
+        <item name="android:background">@color/white</item>
+    </style>
 
     <style name="rounded.mindjoy" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">32dp</item>
     </style>
+    
+    <style name="minjoyText">
+        <item name="android:src">@drawable/mindjoy_text</item>
+    </style>
+
+    <style name="textTheme">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
