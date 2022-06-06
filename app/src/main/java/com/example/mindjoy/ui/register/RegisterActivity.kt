@@ -7,11 +7,16 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.R
 import com.example.mindjoy.customview.ClearImgEditText
 import com.example.mindjoy.customview.PasswordEditText
 import com.example.mindjoy.databinding.ActivityRegisterBinding
+import com.example.mindjoy.network.RegisterUser
 import com.example.mindjoy.ui.login.LoginActivity
+import com.example.mindjoy.ui.viewmodel.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -21,6 +26,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var btnSignup: Button
     private lateinit var tvHaveAccount: TextView
     private lateinit var binding: ActivityRegisterBinding
+
+    private lateinit var viewModel: RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +41,27 @@ class RegisterActivity : AppCompatActivity() {
         tvHaveAccount = findViewById(R.id.tv_have_account)
 
         onClickListener()
+
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            RegisterViewModel::class.java
+        )
+
+        viewModel.isSuccessful.observe(this) {
+            if (it) {
+                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                moveToLogin()
+            }
+        }
     }
 
     private fun onClickListener(){
         btnSignup.setOnClickListener{
-            moveToLogin()
+            val name = etName.text.toString().trim()
+            val username = etUsername.text.toString().trim()
+            val password = edPw.text.toString().trim()
+            val registerUser = RegisterUser(name, username, password)
+
+            viewModel.setRegisterUser(registerUser)
         }
 
         tvHaveAccount.setOnClickListener {
@@ -47,10 +70,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun moveToLogin(){
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        },500)
+        Intent(this, LoginActivity::class.java).also {
+            startActivity(it)
+        }
 
     }
 }
