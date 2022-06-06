@@ -10,6 +10,7 @@
         android:id="@+id/bottom_navigation"
         app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
         app:itemTextAppearanceInactive="@style/BottomNavigationViewTextStyle"
+        style="@style/bottomNavStyle"
         app:itemIconTint="@drawable/bottom_navigation_selector"
         app:itemTextColor="@drawable/bottom_navigation_selector"
         android:layout_width="match_parent"
@@ -18,8 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="10dp"
-        app:menu="@menu/bottom_menu"
-        android:background="@color/white"/>
+        app:menu="@menu/bottom_menu" />
 
     <FrameLayout
         android:id="@+id/fragment_container"
