@@ -15,6 +15,7 @@ import com.example.mindjoy.customview.PasswordEditText
 import com.example.mindjoy.databinding.ActivityLoginBinding
 import com.example.mindjoy.network.LoginUser
 import com.example.mindjoy.ui.MainActivity
+import com.example.mindjoy.ui.helper.Session
 import com.example.mindjoy.ui.register.RegisterActivity
 import com.example.mindjoy.ui.viewmodel.LoginViewModel
 import com.example.mindjoy.ui.viewmodel.RegisterViewModel
@@ -28,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     private lateinit var viewModel: LoginViewModel
+    private lateinit var session: Session
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +49,12 @@ class LoginActivity : AppCompatActivity() {
             LoginViewModel::class.java
         )
 
+        session = Session(this)
+
         viewModel.isSuccessful.observe(this) {
             if (it) {
                 movetoHome()
+                session.saveLogin(true)
             }
             else {
                 Toast.makeText(this, "Wrong username or password!", Toast.LENGTH_SHORT).show()
@@ -72,6 +77,16 @@ class LoginActivity : AppCompatActivity() {
 
         btnSignup.setOnClickListener{
             moveToRegister()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (session.getLogin()) {
+            Intent(this, MainActivity::class.java).also {
+                startActivity(it)
+            }
+            finish()
         }
     }
 
