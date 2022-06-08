@@ -95,6 +95,7 @@ class LoginActivity : AppCompatActivity() {
     private fun movetoHome(){
         Intent(this, MainActivity::class.java).also {
             startActivity(it)
+            intent.putExtra("user", loginUser)
         }
         finish()
     }
