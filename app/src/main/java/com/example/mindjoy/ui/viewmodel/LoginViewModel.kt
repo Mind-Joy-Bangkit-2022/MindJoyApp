@@ -1,18 +1,14 @@
 package com.example.mindjoy.ui.viewmodel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mindjoy.network.ApiConfig
-import com.example.mindjoy.network.RegisterUser
-import com.example.mindjoy.network.RegisterUserResponse
+import com.example.mindjoy.network.*
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
-class RegisterViewModel: ViewModel() {
+class LoginViewModel : ViewModel() {
 
     private val _isSuccessful = MutableLiveData<Boolean>()
     val isSuccessful: LiveData<Boolean> = _isSuccessful
@@ -20,12 +16,12 @@ class RegisterViewModel: ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun setRegisterUser(registerUser: RegisterUser){
+    fun setLoginUser(loginUser: LoginUser){
         _isLoading.value = true
 
-        val client = ApiConfig.getApiService().userRegister(registerUser)
-        client.enqueue(object : retrofit2.Callback<RegisterUserResponse> {
-            override fun onResponse(call: Call<RegisterUserResponse>, response: Response<RegisterUserResponse>) {
+        val client = ApiConfig.getApiService().userLogin(loginUser)
+        client.enqueue(object : retrofit2.Callback<LoginUserResponse> {
+            override fun onResponse(call: Call<LoginUserResponse>, response: Response<LoginUserResponse>) {
                 if (response.isSuccessful){
                     _isSuccessful.value = true
                     _isLoading.value = false
@@ -35,8 +31,9 @@ class RegisterViewModel: ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<RegisterUserResponse>, t: Throwable) {
+            override fun onFailure(call: Call<LoginUserResponse>, t: Throwable) {
                 Log.e("TAG", "onFailure: ${t.message}")
+                _isLoading.value = false
             }
         })
     }

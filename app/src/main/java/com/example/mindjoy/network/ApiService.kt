@@ -8,4 +8,9 @@ interface ApiService {
     fun userRegister(
         @Body register: RegisterUser
     ): Call<RegisterUserResponse>
+
+    @POST("login")
+    fun userLogin(
+        @Body login: LoginUser
+    ): Call<LoginUserResponse>
 }
