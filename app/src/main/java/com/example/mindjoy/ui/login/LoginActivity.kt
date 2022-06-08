@@ -15,6 +15,7 @@ import com.example.mindjoy.customview.PasswordEditText
 import com.example.mindjoy.databinding.ActivityLoginBinding
 import com.example.mindjoy.network.LoginUser
 import com.example.mindjoy.ui.MainActivity
+import com.example.mindjoy.ui.helper.Session
 import com.example.mindjoy.ui.register.RegisterActivity
 import com.example.mindjoy.ui.viewmodel.LoginViewModel
 import com.example.mindjoy.ui.viewmodel.RegisterViewModel
@@ -28,6 +29,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     private lateinit var viewModel: LoginViewModel
+    private lateinit var session: Session
+
+    private lateinit var loginUser: LoginUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +51,12 @@ class LoginActivity : AppCompatActivity() {
             LoginViewModel::class.java
         )
 
+        session = Session(this)
+
         viewModel.isSuccessful.observe(this) {
             if (it) {
                 movetoHome()
+                session.saveLogin(true)
             }
             else {
                 Toast.makeText(this, "Wrong username or password!", Toast.LENGTH_SHORT).show()
@@ -65,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener{
             val username = etUsername.text.toString().trim()
             val password = edPw.text.toString().trim()
-            val loginUser = LoginUser(username, password)
+            loginUser = LoginUser(username, password)
 
             viewModel.setLoginUser(loginUser)
         }
@@ -75,9 +82,20 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (session.getLogin()) {
+            Intent(this, MainActivity::class.java).also {
+                startActivity(it)
+            }
+            finish()
+        }
+    }
+
     private fun movetoHome(){
         Intent(this, MainActivity::class.java).also {
             startActivity(it)
+            intent.putExtra("user", loginUser)
         }
         finish()
     }

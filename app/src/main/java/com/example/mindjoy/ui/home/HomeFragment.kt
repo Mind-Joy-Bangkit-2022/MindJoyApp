@@ -14,6 +14,10 @@ import com.example.mindjoy.ui.questions.QuestionActivity
 
 class HomeFragment : Fragment() {
 
+    companion object {
+        const val EXTRA_USER_IDENTITY = "extra_user_identity"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,8 +34,8 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        val user = activity?.intent?.getStringExtra(EXTRA_USER_IDENTITY)
+
         return binding.root
     }
-
-
 }

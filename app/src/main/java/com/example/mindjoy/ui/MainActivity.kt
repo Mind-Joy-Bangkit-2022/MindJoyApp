@@ -56,6 +56,8 @@ class MainActivity : AppCompatActivity() {
         settingBinding.tvAboutUs.setOnClickListener {
             replaceFragment(aboutUsFragment)
         }
+
+        intent.getSerializableExtra("user")
     }
 
     override fun onResume() {
