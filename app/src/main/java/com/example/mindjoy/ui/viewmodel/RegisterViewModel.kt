@@ -16,14 +16,21 @@ class RegisterViewModel: ViewModel() {
     private val _isSuccessful = MutableLiveData<Boolean>()
     val isSuccessful: LiveData<Boolean> = _isSuccessful
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun setRegisterUser(registerUser: RegisterUser){
+        _isLoading.value = true
+
         val client = ApiConfig.getApiService().userRegister(registerUser)
         client.enqueue(object : retrofit2.Callback<RegisterUserResponse> {
             override fun onResponse(call: Call<RegisterUserResponse>, response: Response<RegisterUserResponse>) {
                 if (response.isSuccessful){
                     _isSuccessful.value = true
+                    _isLoading.value = false
                 } else {
                     _isSuccessful.value = false
+                    _isLoading.value = false
                 }
             }
 

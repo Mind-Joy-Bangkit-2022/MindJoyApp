@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -40,6 +41,8 @@ class RegisterActivity : AppCompatActivity() {
         btnSignup = findViewById(R.id.btn_signup)
         tvHaveAccount = findViewById(R.id.tv_have_account)
 
+        binding.progressBar.visibility = View.INVISIBLE
+
         onClickListener()
 
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
@@ -51,6 +54,10 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                 moveToLogin()
             }
+        }
+
+        viewModel.isLoading.observe(this) {
+            showLoading(it)
         }
     }
 
@@ -73,6 +80,10 @@ class RegisterActivity : AppCompatActivity() {
         Intent(this, LoginActivity::class.java).also {
             startActivity(it)
         }
+        finish()
+    }
 
+    private fun showLoading(state: Boolean){
+        binding.progressBar.visibility = if(state) View.VISIBLE else View.GONE
     }
 }
