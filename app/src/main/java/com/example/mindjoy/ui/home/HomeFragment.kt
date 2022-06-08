@@ -36,6 +36,8 @@ class HomeFragment : Fragment() {
 
         val user = activity?.intent?.getStringExtra(EXTRA_USER_IDENTITY)
 
+        binding.tvUsername.text = "Nizar Baihaqi"
+
         return binding.root
     }
 }
