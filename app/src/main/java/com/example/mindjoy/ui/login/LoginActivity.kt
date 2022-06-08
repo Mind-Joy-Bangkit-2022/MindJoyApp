@@ -31,6 +31,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModel: LoginViewModel
     private lateinit var session: Session
 
+    private lateinit var loginUser: LoginUser
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -70,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener{
             val username = etUsername.text.toString().trim()
             val password = edPw.text.toString().trim()
-            val loginUser = LoginUser(username, password)
+            loginUser = LoginUser(username, password)
 
             viewModel.setLoginUser(loginUser)
         }

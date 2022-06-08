@@ -3,7 +3,9 @@ package com.example.mindjoy.ui.settings
 import SettingViewModelFactory
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.ScrollCaptureSession
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
@@ -13,12 +15,16 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.FragmentSettingsBinding
 import com.example.mindjoy.ui.aboutus.AboutUsFragment
+import com.example.mindjoy.ui.helper.Session
+import com.example.mindjoy.ui.login.LoginActivity
 import com.example.mindjoy.ui.splashscreen.dataStore
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
 
     private val aboutUsFragment = AboutUsFragment()
+
+    private lateinit var session: Session
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +34,8 @@ class SettingsFragment : Fragment() {
 
         val viewModelSetting =
             ViewModelProvider(this, SettingViewModelFactory(pref)).get(SettingViewModel::class.java)
+
+        session = Session(requireContext().applicationContext)
 
         viewModelSetting.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
             if (isDarkModeActive) {
@@ -45,6 +53,14 @@ class SettingsFragment : Fragment() {
 
         binding.tvAboutUs.setOnClickListener {
             replaceFragment(aboutUsFragment)
+        }
+
+        binding.tvLogOut.setOnClickListener {
+            Intent(activity, LoginActivity::class.java).also {
+                activity?.startActivity(it)
+            }
+            activity?.finish()
+            session.saveLogin(false)
         }
 
     }
