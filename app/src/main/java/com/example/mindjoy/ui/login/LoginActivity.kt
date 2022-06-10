@@ -1,13 +1,11 @@
 package com.example.mindjoy.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.R
 import com.example.mindjoy.customview.ClearImgEditText
@@ -18,7 +16,6 @@ import com.example.mindjoy.ui.MainActivity
 import com.example.mindjoy.ui.helper.Session
 import com.example.mindjoy.ui.register.RegisterActivity
 import com.example.mindjoy.ui.viewmodel.LoginViewModel
-import com.example.mindjoy.ui.viewmodel.RegisterViewModel
 
 class LoginActivity : AppCompatActivity() {
 

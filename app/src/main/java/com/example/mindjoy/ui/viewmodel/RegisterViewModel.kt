@@ -1,7 +1,6 @@
 package com.example.mindjoy.ui.viewmodel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,6 @@ import com.example.mindjoy.network.RegisterUser
 import com.example.mindjoy.network.RegisterUserResponse
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 class RegisterViewModel: ViewModel() {
 

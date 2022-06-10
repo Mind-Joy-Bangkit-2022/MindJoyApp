@@ -3,12 +3,11 @@ package com.example.mindjoy.ui.settings
 import SettingViewModelFactory
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.ScrollCaptureSession
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -56,17 +55,14 @@ class SettingsFragment : Fragment() {
         }
 
         binding.tvLogOut.setOnClickListener {
-            Intent(activity, LoginActivity::class.java).also {
-                activity?.startActivity(it)
-            }
-            activity?.finish()
-            session.saveLogin(false)
+            alertDialogLogout()
         }
 
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
 
         return binding.root
     }
@@ -80,4 +76,18 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    private fun alertDialogLogout() {
+        AlertDialog.Builder(requireActivity())
+            .setTitle("Log Out")
+            .setMessage("Are you sure want to log out?")
+            .setPositiveButton("Yes") { _, _ ->
+                session.saveLogin(false)
+                Intent(activity, LoginActivity::class.java).also {
+                    activity?.startActivity(it)
+                }
+                requireActivity().finish()
+            }
+            .setNegativeButton("No", null)
+            .show()
+    }
 }
