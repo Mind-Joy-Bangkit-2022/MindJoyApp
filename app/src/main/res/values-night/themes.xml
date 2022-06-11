@@ -28,6 +28,9 @@
 
     <style name="bottomNavStyle">
         <item name="android:background">#0E0E0E</item>
+        <item name="itemIconTint">@drawable/bottom_navigation_selector_dark</item>
+        <item name="itemTextColor">@drawable/bottom_navigation_selector_dark</item>
+<!--        <item name="theme">@drawable/bottom_navigation_selector_dark</item>-->
     </style>
 
     <style name="minjoyText">

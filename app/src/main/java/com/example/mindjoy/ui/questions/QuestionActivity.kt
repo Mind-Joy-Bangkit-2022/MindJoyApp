@@ -1,13 +1,12 @@
 package com.example.mindjoy.ui.questions
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.ActivityQuestionBinding
 import com.example.mindjoy.ui.MainActivity

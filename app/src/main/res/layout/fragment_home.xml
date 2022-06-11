@@ -13,13 +13,13 @@
 
         <TextView
             android:id="@+id/tv_settings"
+            style="@style/textTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="28dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Hello,"
-            style="@style/textTheme"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -28,35 +28,38 @@
 
         <TextView
             android:id="@+id/tv_username"
+            style="@style/textTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
             android:fontFamily="@font/poppins_semibold"
+            android:maxWidth="200dp"
             android:text="MindJoy User"
-            style="@style/textTheme"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@+id/tv_settings"
             app:layout_constraintTop_toBottomOf="@+id/tv_settings" />
 
         <ImageView
             android:id="@+id/profile_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="32dp"
-            android:src="@drawable/ic_profile"
+            android:layout_marginBottom="14dp"
+            android:src="@drawable/mindjoy_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_mental_health"
+            style="@style/textTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Mental Health"
-            style="@style/textTheme"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_username" />
@@ -147,13 +150,13 @@
 
         <TextView
             android:id="@+id/tv_expression"
+            style="@style/textTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Expression"
-            style="@style/textTheme"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_mental_health" />
@@ -241,5 +244,12 @@
                     app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="305dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

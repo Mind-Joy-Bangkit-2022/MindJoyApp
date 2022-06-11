@@ -1,22 +1,21 @@
 package com.example.mindjoy.ui.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.R
 import com.example.mindjoy.customview.ClearImgEditText
 import com.example.mindjoy.customview.PasswordEditText
 import com.example.mindjoy.databinding.ActivityRegisterBinding
 import com.example.mindjoy.network.RegisterUser
+import com.example.mindjoy.ui.home.HomeFragment
 import com.example.mindjoy.ui.login.LoginActivity
+import com.example.mindjoy.ui.login.LoginActivity.Companion.EXTRA_USER_IDENTITY
 import com.example.mindjoy.ui.viewmodel.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity() {
@@ -29,6 +28,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
 
     private lateinit var viewModel: RegisterViewModel
+
+    private var registerUser: RegisterUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +54,8 @@ class RegisterActivity : AppCompatActivity() {
             if (it) {
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                 moveToLogin()
+            } else {
+                Toast.makeText(this, "Username or password is already taken", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -66,9 +69,9 @@ class RegisterActivity : AppCompatActivity() {
             val name = etName.text.toString().trim()
             val username = etUsername.text.toString().trim()
             val password = edPw.text.toString().trim()
-            val registerUser = RegisterUser(name, username, password)
+            registerUser = RegisterUser(name, username, password)
 
-            viewModel.setRegisterUser(registerUser)
+            viewModel.setRegisterUser(registerUser!!)
         }
 
         tvHaveAccount.setOnClickListener {
@@ -77,9 +80,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun moveToLogin(){
-        Intent(this, LoginActivity::class.java).also {
-            startActivity(it)
-        }
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
         finish()
     }
 

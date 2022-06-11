@@ -54,7 +54,7 @@
     <string-array name="answer1">
         <item>Male</item>
         <item>Female</item>
-        <item>Prefer Not To Say</item>
+        <item>Prefer not to say</item>
     </string-array>
 
     <string-array name="answer2">
@@ -70,10 +70,10 @@
     </string-array>
 
     <string-array name="answer4">
-        <item>For Some Time</item>
-        <item>Significant Time</item>
-        <item>Not Sad</item>
-        <item>Long Time</item>
+        <item>For some time</item>
+        <item>Significant time</item>
+        <item>Not sad</item>
+        <item>Long time</item>
     </string-array>
 
     <string-array name="answer5">
@@ -83,7 +83,7 @@
     </string-array>
 
     <string-array name="answer6">
-        <item>Very Often</item>
+        <item>Very often</item>
         <item>Sometimes</item>
         <item>Never</item>
         <item>Often</item>
@@ -98,8 +98,8 @@
     </string-array>
 
     <string-array name="answer8">
-        <item>Highly Supportive</item>
-        <item>Little Bit</item>
+        <item>Highly supportive</item>
+        <item>Little bit</item>
         <item>Satisfactory</item>
         <item>Not at all</item>
     </string-array>
@@ -122,7 +122,7 @@
         <item>Never</item>
         <item>Often</item>
         <item>Sometimes</item>
-        <item>Very Often</item>
+        <item>Very often</item>
     </string-array>
 
     <string-array name="answer12">

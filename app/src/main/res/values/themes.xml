@@ -32,6 +32,8 @@
 
     <style name="bottomNavStyle">
         <item name="android:background">@color/white</item>
+        <item name="itemIconTint">@drawable/bottom_navigation_selector</item>
+        <item name="itemTextColor">@drawable/bottom_navigation_selector</item>
     </style>
 
     <style name="rounded.mindjoy" parent="">
