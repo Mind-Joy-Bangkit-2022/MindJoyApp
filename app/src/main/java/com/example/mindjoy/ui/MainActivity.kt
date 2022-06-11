@@ -2,6 +2,7 @@ package com.example.mindjoy.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.mindjoy.R
@@ -11,6 +12,7 @@ import com.example.mindjoy.ui.aboutus.AboutUsFragment
 import com.example.mindjoy.ui.camera.CameraActivity
 import com.example.mindjoy.ui.home.HomeFragment
 import com.example.mindjoy.ui.settings.SettingsFragment
+import com.example.mindjoy.ui.viewmodel.SharedViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private val settingsFragment = SettingsFragment()
     private val aboutUsFragment = AboutUsFragment()
 
+    private val viewModel: SharedViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.ic_home -> {
                     replaceFragment(homeFragment)
+                    viewModel.updateFragment(homeFragment)
                 }
                 R.id.ic_camera -> {
                     Intent(this, CameraActivity::class.java).also {
@@ -42,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.ic_settings -> {
                     replaceFragment(settingsFragment)
+                    viewModel.updateFragment(settingsFragment)
                 }
             }
             true
@@ -54,8 +59,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        binding.bottomNavigation.menu.findItem(R.id.ic_home).isChecked = true
-        replaceFragment(homeFragment)
+        viewModel.currentFragment.observe(this) {
+            replaceFragment(it)
+            when (it) {
+                homeFragment -> binding.bottomNavigation.menu.findItem(R.id.ic_home).isChecked = true
+                settingsFragment -> binding.bottomNavigation.menu.findItem(R.id.ic_settings).isChecked = true
+            }
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {

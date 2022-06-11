@@ -10,6 +10,7 @@ import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.FragmentSettingsBinding
@@ -17,6 +18,7 @@ import com.example.mindjoy.ui.aboutus.AboutUsFragment
 import com.example.mindjoy.ui.helper.Session
 import com.example.mindjoy.ui.login.LoginActivity
 import com.example.mindjoy.ui.splashscreen.dataStore
+import com.example.mindjoy.ui.viewmodel.SharedViewModel
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
@@ -24,6 +26,8 @@ class SettingsFragment : Fragment() {
     private val aboutUsFragment = AboutUsFragment()
 
     private lateinit var session: Session
+
+    private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
