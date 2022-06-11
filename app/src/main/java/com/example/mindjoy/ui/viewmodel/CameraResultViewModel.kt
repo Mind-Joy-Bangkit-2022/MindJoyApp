@@ -12,8 +12,8 @@ import retrofit2.Response
 
 class CameraResultViewModel : ViewModel() {
 
-    private val _response = MutableLiveData<EmotionResult>()
-    val response: LiveData<EmotionResult> = _response
+    private val _response = MutableLiveData<String>()
+    val response: LiveData<String> = _response
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -32,8 +32,8 @@ class CameraResultViewModel : ViewModel() {
         client.enqueue(object : Callback<EmotionResult> {
             override fun onResponse(call: Call<EmotionResult>, response: Response<EmotionResult>) {
                 _isSuccessful.postValue(true)
-                _response.postValue(response.body())
                 _isLoading.value = false
+                _response.postValue(response.body()!!.result)
             }
 
             override fun onFailure(call: Call<EmotionResult>, t: Throwable) {

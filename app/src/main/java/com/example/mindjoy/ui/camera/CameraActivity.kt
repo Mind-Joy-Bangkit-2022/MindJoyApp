@@ -33,8 +33,8 @@ class CameraActivity : AppCompatActivity() {
 
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
     private var imageCapture: ImageCapture? = null
-
-    private var getFile: File? = null
+    private var selectedImg: Uri? = null
+    private var isPicked: Boolean? = null
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -99,6 +99,13 @@ class CameraActivity : AppCompatActivity() {
         super.onResume()
         hideSystemUI()
         startCamera()
+        if (isPicked == true) {
+            val intent = Intent(this, CameraResultActivity::class.java)
+            intent.putExtra("file", selectedImg.toString())
+            intent.putExtra("isFromGallery", true)
+            startActivity(intent)
+            isPicked = false
+        }
     }
 
     override fun onDestroy() {
@@ -159,6 +166,7 @@ class CameraActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val intent = Intent(this@CameraActivity, CameraResultActivity::class.java)
                     intent.putExtra("picture", photoFile)
+                    intent.putExtra("isFromGallery", false)
                     intent.putExtra(
                         "isBackCamera",
                         cameraSelector == CameraSelector.DEFAULT_FRONT_CAMERA
@@ -170,6 +178,12 @@ class CameraActivity : AppCompatActivity() {
         )
     }
 
+//    private fun startGallery(){
+//        val intent = Intent(this, CameraResultActivity::class.java)
+//        intent.putExtra("isFromGallery", true)
+//        startActivity(intent)
+//    }
+
     private fun startGallery() {
         val intent = Intent()
         intent.action = Intent.ACTION_GET_CONTENT
@@ -180,11 +194,9 @@ class CameraActivity : AppCompatActivity() {
 
     private val launcherIntentGallery = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
-            val selectedImg: Uri = result.data?.data as Uri
-
-            val intent = Intent(this, CameraResultActivity::class.java)
-            intent.putExtra("file", selectedImg)
-//            startActivity(intent)
+            selectedImg = result.data?.data
+            bindingResult.previewImageView.setImageURI(selectedImg)
+            isPicked = true
         }
     }
 
