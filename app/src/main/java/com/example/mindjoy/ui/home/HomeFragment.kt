@@ -12,6 +12,8 @@ import com.example.mindjoy.ui.questions.QuestionActivity
 
 class HomeFragment : Fragment() {
 
+    private lateinit var binding: FragmentHomeBinding
+
     companion object {
         const val EXTRA_USER_IDENTITY = "extra_user_identity"
     }
@@ -20,7 +22,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentHomeBinding.inflate(layoutInflater)
 
         binding.btnCheckMental.setOnClickListener {
             val intent = Intent (this@HomeFragment.requireContext(), QuestionActivity::class.java)
@@ -32,10 +34,15 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        val user = activity?.intent?.getStringExtra(EXTRA_USER_IDENTITY)
-
-        binding.tvUsername.text = "Nizar Baihaqi"
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (arguments != null) {
+            val name = arguments?.getString(EXTRA_USER_IDENTITY)
+            binding.tvUsername.text = name
+        }
     }
 }

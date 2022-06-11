@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.camera.ExpressionResultActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
+
+        <ImageView
+            android:id="@+id/expression_emoticon"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/happy_face"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/expression_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="We detect your expression is"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/expression_emoticon"
+            app:layout_constraintStart_toStartOf="@+id/expression_emoticon"
+            app:layout_constraintTop_toBottomOf="@+id/expression_emoticon" />
+
+        <TextView
+            android:id="@+id/expression_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Happy"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="@+id/expression_text"
+            app:layout_constraintStart_toStartOf="@+id/expression_text"
+            app:layout_constraintTop_toBottomOf="@+id/expression_text" />
+
+        <TextView
+            android:id="@+id/expression_quotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins"
+            android:maxWidth="270dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expression_status" />
+
+        <android.widget.Button
+            android:id="@+id/btn_detect_again"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/custom_button_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Detect again"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/expression_quotes"
+            app:layout_constraintStart_toStartOf="@+id/expression_quotes"
+            app:layout_constraintTop_toBottomOf="@+id/expression_quotes" />
+
+        <android.widget.Button
+            android:id="@+id/btn_back_to_home_expression"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/custom_button_hollow"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Back to home"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_detect_again"
+            app:layout_constraintStart_toStartOf="@+id/btn_detect_again"
+            app:layout_constraintTop_toBottomOf="@+id/btn_detect_again" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

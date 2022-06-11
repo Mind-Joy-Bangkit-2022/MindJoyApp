@@ -1,5 +1,6 @@
 package com.example.mindjoy.ui.camera
 
+import android.app.PendingIntent.getActivity
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
@@ -12,12 +13,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.databinding.ActivityCameraResultBinding
 import com.example.mindjoy.network.ApiConfig
 import com.example.mindjoy.network.ApiService
 import com.example.mindjoy.network.EmotionResult
 import com.example.mindjoy.ui.helper.rotateBitmap
 import com.example.mindjoy.ui.helper.uriToFile
+import com.example.mindjoy.ui.viewmodel.CameraResultViewModel
+import com.example.mindjoy.ui.viewmodel.LoginViewModel
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -33,15 +37,20 @@ class CameraResultActivity : AppCompatActivity() {
     private var getFile: File? = null
     private var result: Bitmap? = null
 
-    private lateinit var client: Call<EmotionResult>
+    private var expressionStatus: String? = null
 
-    private val _response = MutableLiveData<EmotionResult>()
-    val response: LiveData<EmotionResult> = _response
+    private lateinit var viewModel: CameraResultViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.progressBar!!.visibility = View.GONE
+
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            CameraResultViewModel::class.java
+        )
 
         setImageFromCamera()
 //        setImageFromGallery()
@@ -54,10 +63,19 @@ class CameraResultActivity : AppCompatActivity() {
 
         binding.btnDetect.setOnClickListener {
             uploadImage()
-            response.observe(this) {
-                Log.d(TAG, "onCreate: ${it.result}")
-                Toast.makeText(this, it.result, Toast.LENGTH_SHORT).show()
+            viewModel.isSuccessful.observe(this) { successful ->
+                if (successful) {
+                    viewModel.response.observe(this) {
+                        expressionStatus = it.result
+                    }
+                    moveToResult()
+                    viewModel.updateSuccessfulValue(false)
+                }
             }
+        }
+
+        viewModel.isLoading.observe(this) {
+            showLoading(it)
         }
 
     }
@@ -106,16 +124,14 @@ class CameraResultActivity : AppCompatActivity() {
             requestImageFile
         )
 
-        client = ApiConfig.getApiService2().emotion(imageMultipart)
-        client.enqueue(object : Callback<EmotionResult> {
-            override fun onResponse(call: Call<EmotionResult>, response: Response<EmotionResult>) {
-                _response.postValue(response.body())
-            }
+        viewModel.setExpression(imageMultipart)
+    }
 
-            override fun onFailure(call: Call<EmotionResult>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
+    private fun moveToResult(){
+        Intent(this, ExpressionResultActivity::class.java).also {
+            intent.putExtra("expressionStatus", expressionStatus)
+            startActivity(it)
+        }
     }
 
     private fun reduceFileImage(file: File): File {
