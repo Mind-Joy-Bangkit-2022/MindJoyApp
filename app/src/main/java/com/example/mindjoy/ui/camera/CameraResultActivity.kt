@@ -1,33 +1,20 @@
 package com.example.mindjoy.ui.camera
 
-import android.app.PendingIntent.getActivity
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.databinding.ActivityCameraResultBinding
-import com.example.mindjoy.network.ApiConfig
-import com.example.mindjoy.network.ApiService
-import com.example.mindjoy.network.EmotionResult
 import com.example.mindjoy.ui.helper.rotateBitmap
 import com.example.mindjoy.ui.helper.uriToFile
 import com.example.mindjoy.ui.viewmodel.CameraResultViewModel
-import com.example.mindjoy.ui.viewmodel.LoginViewModel
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.*
 
 class CameraResultActivity : AppCompatActivity() {
@@ -37,9 +24,10 @@ class CameraResultActivity : AppCompatActivity() {
     private var getFile: File? = null
     private var result: Bitmap? = null
 
-    private var expressionStatus: String? = null
+//    private var expressionStatus: String? = null
 
     private lateinit var viewModel: CameraResultViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +40,16 @@ class CameraResultActivity : AppCompatActivity() {
             CameraResultViewModel::class.java
         )
 
-        setImageFromCamera()
-//        setImageFromGallery()
+        val isFromGallery = intent.getBooleanExtra("isFromGallery", false)
+
+        if (isFromGallery) {
+            setImageFromGallery()
+        } else {
+            setImageFromCamera()
+        }
+
+//        setImageFromCamera()
+////        setImageFromGallery()
 
         binding.btnRetake.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
@@ -63,18 +59,18 @@ class CameraResultActivity : AppCompatActivity() {
 
         binding.btnDetect.setOnClickListener {
             uploadImage()
-            viewModel.isSuccessful.observe(this) { successful ->
-                if (successful) {
-                    viewModel.response.observe(this) {
-                        expressionStatus = it.result
-                    }
-                    moveToResult()
-                    viewModel.updateSuccessfulValue(false)
-                }
+            viewModel.response.observe(this) {
+                val expressionStatus = it
+                val intent = Intent(this, ExpressionResultActivity::class.java)
+                intent.putExtra("expressionStatus", expressionStatus)
+                startActivity(intent)
             }
+//            moveToResult()
+            viewModel.updateSuccessfulValue(false)
         }
 
-        viewModel.isLoading.observe(this) {
+        viewModel.isLoading.observe(this)
+        {
             showLoading(it)
         }
 
@@ -87,7 +83,12 @@ class CameraResultActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun setImageFromCamera(){
+    override fun onResume() {
+        super.onResume()
+        viewModel.updateSuccessfulValue(false)
+    }
+
+    private fun setImageFromCamera() {
         val myFile = intent.getSerializableExtra("picture") as File
         val isBackCamera = intent.getSerializableExtra("isBackCamera") as Boolean
 
@@ -106,14 +107,16 @@ class CameraResultActivity : AppCompatActivity() {
         binding.previewImageView.setImageBitmap(result)
     }
 
-    private fun setImageFromGallery(){
-        val selectedImg = intent.getSerializableExtra("file") as Uri
+    private fun setImageFromGallery() {
+        val uri = intent.getStringExtra("file")
+        val selectedImg = Uri.parse(uri)
+
         val myFile = uriToFile(selectedImg, this)
         getFile = myFile
         binding.previewImageView.setImageURI(selectedImg)
     }
 
-    private fun uploadImage(){
+    private fun uploadImage() {
         val file = reduceFileImage(getFile as File)
 
         val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
@@ -127,12 +130,11 @@ class CameraResultActivity : AppCompatActivity() {
         viewModel.setExpression(imageMultipart)
     }
 
-    private fun moveToResult(){
-        Intent(this, ExpressionResultActivity::class.java).also {
-            intent.putExtra("expressionStatus", expressionStatus)
-            startActivity(it)
-        }
-    }
+//    private fun moveToResult() {
+//        val intent = Intent(this, ExpressionResultActivity::class.java)
+//        intent.putExtra("expressionStatus", expressionStatus)
+//        startActivity(intent)
+//    }
 
     private fun reduceFileImage(file: File): File {
         val bitmap = BitmapFactory.decodeFile(file.path)
@@ -149,7 +151,7 @@ class CameraResultActivity : AppCompatActivity() {
         return file
     }
 
-    private fun showLoading(state: Boolean){
-        binding.progressBar?.visibility = if(state) View.VISIBLE else View.GONE
+    private fun showLoading(state: Boolean) {
+        binding.progressBar?.visibility = if (state) View.VISIBLE else View.GONE
     }
 }

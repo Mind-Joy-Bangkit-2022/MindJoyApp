@@ -18,9 +18,6 @@
             android:name=".ui.camera.ExpressionResultActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.aboutus.AboutUsActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true">
             <intent-filter>

@@ -13,4 +13,11 @@ class SharedViewModel : ViewModel() {
     fun updateFragment(newFragment: Fragment) {
         _currentFragment.value = newFragment
     }
+
+    private val _expressionStatus = MutableLiveData<String>()
+    val expressionStatus: LiveData<String> = _expressionStatus
+
+    fun updateExpression(newExpression: String) {
+        _expressionStatus.value = newExpression
+    }
 }

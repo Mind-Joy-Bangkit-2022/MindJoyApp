@@ -2,6 +2,7 @@ package com.example.mindjoy.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -29,7 +30,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         settingBinding = FragmentSettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         replaceFragment(homeFragment)
+        viewModel.updateFragment(homeFragment)
 
         binding.bottomNavigation.menu.findItem(R.id.ic_home).isChecked = true
 
@@ -60,10 +63,29 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.currentFragment.observe(this) {
-            replaceFragment(it)
-            when (it) {
-                homeFragment -> binding.bottomNavigation.menu.findItem(R.id.ic_home).isChecked = true
-                settingsFragment -> binding.bottomNavigation.menu.findItem(R.id.ic_settings).isChecked = true
+            if (it != null) {
+                replaceFragment(it)
+                when (it) {
+                    homeFragment -> binding.bottomNavigation.menu.findItem(R.id.ic_home).isChecked =
+                        true
+                    settingsFragment -> binding.bottomNavigation.menu.findItem(R.id.ic_settings).isChecked =
+                        true
+                }
+            }
+        }
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        viewModel.currentFragment.observe(this) {
+            if (it != null) {
+                replaceFragment(it)
+                when (it) {
+                    homeFragment -> binding.bottomNavigation.menu.findItem(R.id.ic_home).isChecked =
+                        true
+                    settingsFragment -> binding.bottomNavigation.menu.findItem(R.id.ic_settings).isChecked =
+                        true
+                }
             }
         }
     }

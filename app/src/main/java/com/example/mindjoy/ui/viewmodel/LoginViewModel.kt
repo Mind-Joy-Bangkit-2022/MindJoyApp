@@ -18,6 +18,13 @@ class LoginViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _response = MutableLiveData<String>()
+    val response: LiveData<String> = _response
+
+    fun updateSuccessfulValue(newState: Boolean) {
+        _isSuccessful.value = newState
+    }
+
     fun setLoginUser(loginUser: LoginUser){
         _isLoading.value = true
 
@@ -27,9 +34,11 @@ class LoginViewModel : ViewModel() {
                 if (response.isSuccessful){
                     _isSuccessful.value = true
                     _isLoading.value = false
+                    _response.postValue(response.body()!!.message)
                 } else {
                     _isSuccessful.value = false
                     _isLoading.value = false
+                    _response.postValue(response.body()!!.message)
                 }
             }
 
