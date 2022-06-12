@@ -23,4 +23,9 @@ interface ApiService {
     fun emotion(
         @Part img: MultipartBody.Part
     ): Call<EmotionResult>
+
+    @POST("mentalhealth")
+    fun mentalHealth(
+        @Body mentalHealth: MentalHealthData
+    ) : Call<MentalHealthResponse>
 }
