@@ -2,6 +2,8 @@ package com.example.mindjoy.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -42,13 +44,14 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btn_login)
         btnSignup = findViewById(R.id.btn_signup)
 
+        etUsername.addTextChangedListener(loginTextWatcher)
+        edPw.addTextChangedListener(loginTextWatcher)
+
         binding.progressBar.visibility = View.INVISIBLE
 
         onClickListener()
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
-            LoginViewModel::class.java
-        )
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[LoginViewModel::class.java]
 
         session = Session(this)
         userPref = UserDataPreferences(this)
@@ -67,6 +70,19 @@ class LoginActivity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
+    }
+
+    private val loginTextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            val username = etUsername.text.toString().trim()
+            val password = edPw.text.toString().trim()
+
+            btnLogin.isEnabled = username.isNotEmpty() && password.length > 5
+        }
+
+        override fun afterTextChanged(p0: Editable?) {}
     }
 
     private fun onClickListener(){
