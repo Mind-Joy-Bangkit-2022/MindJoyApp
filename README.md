@@ -47,9 +47,27 @@ also the use of Retrofit in accessing APIs.
 ## Screenshots
 
 <p align="center">
-  <img src="" width="">
+  <img src="/misc/img/mindjoy1.jpg" width="200">
+  <img src="/misc/img/mindjoy2.jpg" width="200">
+  <img src="/misc/img/mindjoy3.jpg" width="200">
 </p>
 
+<p align="center">
+  <img src="/misc/img/mindjoy4.jpg" width="200">
+  <img src="/misc/img/mindjoy5.jpg" width="200">
+</p>
+
+<p align="center">
+  <img src="/misc/img/mindjoy6.jpg" width="200">
+  <img src="/misc/img/mindjoy7.jpg" width="200">
+  <img src="/misc/img/mindjoy9.jpg" width="200">
+</p>
+
+<p align="center">
+  <img src="/misc/img/mindjoy8.jpg" width="200">
+  <img src="/misc/img/mindjoy10.jpg" width="200">
+  <img src="/misc/img/mindjoy11.jpg" width="200">
+</p>
 
 ## Development Roadmap
 
