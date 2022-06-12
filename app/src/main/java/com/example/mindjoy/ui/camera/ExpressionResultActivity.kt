@@ -16,7 +16,6 @@ import kotlin.random.Random
 class ExpressionResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityExpressionResultBinding
-    private val viewModel: SharedViewModel by viewModels()
     private lateinit var userPref: UserDataPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +38,7 @@ class ExpressionResultActivity : AppCompatActivity() {
                 userPref.saveExpression("Sad")
             }
             else -> {
-                binding.expressionStatus.text = "neutral"
+                binding.expressionStatus.text = "Neutral"
                 userPref.saveExpression("Neutral")
             }
         }
