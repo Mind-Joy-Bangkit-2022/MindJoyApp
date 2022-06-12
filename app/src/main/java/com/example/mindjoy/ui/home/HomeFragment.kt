@@ -44,6 +44,20 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        updateHome()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateHome()
+    }
+
+    private fun updateHome(){
         val nameStatus = userPref.getName()
         val expressionStatus = userPref.getExpression()
         val mentalStatus = userPref.getMentalHealth()
@@ -70,15 +84,5 @@ class HomeFragment : Fragment() {
         } else {
             binding.cardTvExpresionStatus.text = "-"
         }
-
-
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
     }
 }
