@@ -16,8 +16,8 @@ class QuestionViewModel : ViewModel() {
     private val _isSuccessful = MutableLiveData<Boolean>()
     val isSuccessful: LiveData<Boolean> = _isSuccessful
 
-    private val _isFailed = MutableLiveData<Boolean>()
-    val isFailed: LiveData<Boolean> = _isFailed
+//    private val _isFailed = MutableLiveData<Boolean>()
+//    val isFailed: LiveData<Boolean> = _isFailed
 
     private val _response = MutableLiveData<String>()
     val response: LiveData<String> = _response
@@ -28,7 +28,6 @@ class QuestionViewModel : ViewModel() {
 
     fun setQuestion(data: MentalHealthData){
         _isLoading.value = true
-        _isFailed.value = false
 
         val client = ApiConfig.getApiService().mentalHealth(data)
         client.enqueue(object : retrofit2.Callback<MentalHealthResponse> {
@@ -39,7 +38,6 @@ class QuestionViewModel : ViewModel() {
                     _response.postValue(response.body()?.result)
                 } else {
                     _isSuccessful.value = false
-                    _isFailed.value = true
                     _isLoading.value = false
                     _response.postValue(response.body()?.result)
                 }
@@ -47,8 +45,8 @@ class QuestionViewModel : ViewModel() {
 
             override fun onFailure(call: Call<MentalHealthResponse>, t: Throwable) {
                 Log.e("TAG", "onFailure: ${t.message}")
+                _isSuccessful.value = false
                 _isLoading.value = false
-                _isFailed.value = true
             }
         })
     }

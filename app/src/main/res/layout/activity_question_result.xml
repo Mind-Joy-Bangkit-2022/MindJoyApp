@@ -47,18 +47,32 @@
             app:layout_constraintTop_toBottomOf="@+id/mental_health_text" />
 
         <TextView
-            android:id="@+id/mental_health_quotes"
+            android:id="@+id/mental_health_description"
+            style="@style/textTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
+            android:maxWidth="270dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mental_health_status" />
+
+
+        <TextView
+            android:id="@+id/mental_health_quotes"
             style="@style/textTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins"
             android:maxWidth="270dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mental_health_status" />
+            app:layout_constraintTop_toBottomOf="@+id/mental_health_description" />
 
         <android.widget.Button
             android:id="@+id/btn_detect_again"

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -31,6 +32,11 @@ class QuestionActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[QuestionViewModel::class.java]
 
+        binding.progressBar?.visibility = View.GONE
+
+        viewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
 
         tvBack = findViewById(R.id.tv_back_button_question)
         tvBack.setOnClickListener {
@@ -225,12 +231,13 @@ class QuestionActivity : AppCompatActivity() {
 
             viewModel.setQuestion(data)
             viewModel.updateSuccessfulValue(false)
-            viewModel.isSuccessful.observe(this) {
-                if (it) {
+            viewModel.isSuccessful.observe(this) { success ->
+                if (success) {
                     viewModel.response.observe(this) {
                         val response = it
                         val intent = Intent(this, QuestionResultActivity::class.java)
                         intent.putExtra("mentalHealthStatus", response)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                         startActivity(intent)
                     }
                     viewModel.updateSuccessfulValue(false)
@@ -239,5 +246,9 @@ class QuestionActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun showLoading(state: Boolean){
+        binding.progressBar?.visibility = if(state) View.VISIBLE else View.GONE
     }
 }
