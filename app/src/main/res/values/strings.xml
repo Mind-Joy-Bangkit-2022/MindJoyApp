@@ -38,7 +38,7 @@
     </string>
     <string name="question_14">
         How often do you get offended or angry or start crying?
-        \n[1]Not at all [2]Slightly [3]Moderately [4]Very [5]Extremely
+        \n[1]Sometimes [2]Often [3]Very often [4]Never
     </string>
     <string name="question_15">
         How likely do you feel yourself vulnerable or lonely?
@@ -83,7 +83,7 @@
     </string-array>
 
     <string-array name="answer6">
-        <item>Very often</item>
+        <item>Very Often</item>
         <item>Sometimes</item>
         <item>Never</item>
         <item>Often</item>
@@ -122,15 +122,15 @@
         <item>Never</item>
         <item>Often</item>
         <item>Sometimes</item>
-        <item>Very often</item>
+        <item>Very Often</item>
     </string-array>
 
     <string-array name="answer12">
-        <item>2–5 hours</item>
+        <item>2 to 5 hours</item>
         <item>More than
             10 hours</item>
-        <item>5 – 10 hours</item>
-        <item>1–2 hours</item>
+        <item>5 to 10 hours</item>
+        <item>1 to 2 hours</item>
     </string-array>
 
     <string-array name="answer13">
@@ -146,7 +146,6 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
-        <item>5</item>
     </string-array>
 
     <string-array name="answer15">

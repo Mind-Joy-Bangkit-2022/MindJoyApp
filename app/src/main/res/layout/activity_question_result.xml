@@ -12,7 +12,7 @@
         android:paddingBottom="50dp">
 
         <ImageView
-            android:id="@+id/expression_emoticon"
+            android:id="@+id/mental_health_emoticon"
             android:layout_width="220dp"
             android:layout_height="220dp"
             android:layout_marginTop="50dp"
@@ -27,27 +27,27 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:fontFamily="@font/poppins_semibold"
-            android:text="We detect your expression is"
+            android:text="We detect your mental health is"
             style="@style/textTheme"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/expression_emoticon"
-            app:layout_constraintStart_toStartOf="@+id/expression_emoticon"
-            app:layout_constraintTop_toBottomOf="@+id/expression_emoticon" />
+            app:layout_constraintEnd_toEndOf="@+id/mental_health_emoticon"
+            app:layout_constraintStart_toStartOf="@+id/mental_health_emoticon"
+            app:layout_constraintTop_toBottomOf="@+id/mental_health_emoticon" />
 
         <TextView
-            android:id="@+id/expression_status"
+            android:id="@+id/mental_health_status"
+            style="@style/textTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Happy"
-            style="@style/textTheme"
+            android:text="Good"
             android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="@+id/mental_health_text"
             app:layout_constraintStart_toStartOf="@+id/mental_health_text"
             app:layout_constraintTop_toBottomOf="@+id/mental_health_text" />
 
         <TextView
-            android:id="@+id/expression_quotes"
+            android:id="@+id/mental_health_quotes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -58,7 +58,7 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/expression_status" />
+            app:layout_constraintTop_toBottomOf="@+id/mental_health_status" />
 
         <android.widget.Button
             android:id="@+id/btn_detect_again"
@@ -73,12 +73,12 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/expression_quotes"
-            app:layout_constraintStart_toStartOf="@+id/expression_quotes"
-            app:layout_constraintTop_toBottomOf="@+id/expression_quotes" />
+            app:layout_constraintEnd_toEndOf="@+id/mental_health_quotes"
+            app:layout_constraintStart_toStartOf="@+id/mental_health_quotes"
+            app:layout_constraintTop_toBottomOf="@+id/mental_health_quotes" />
 
         <android.widget.Button
-            android:id="@+id/btn_back_to_home_expression"
+            android:id="@+id/btn_back_to_home_mental_health"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginStart="32dp"

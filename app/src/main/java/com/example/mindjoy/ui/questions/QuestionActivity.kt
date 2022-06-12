@@ -4,29 +4,40 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.ActivityQuestionBinding
+import com.example.mindjoy.network.MentalHealthData
 import com.example.mindjoy.ui.MainActivity
+import com.example.mindjoy.ui.camera.ExpressionResultActivity
+import com.example.mindjoy.ui.viewmodel.QuestionViewModel
 
 class QuestionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityQuestionBinding
     private lateinit var tvBack: TextView
+    private lateinit var viewModel: QuestionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[QuestionViewModel::class.java]
+
+
         tvBack = findViewById(R.id.tv_back_button_question)
         tvBack.setOnClickListener {
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
-            },300)
+            }, 300)
         }
 
         val ansGender = resources.getStringArray(R.array.answer1)
@@ -93,5 +104,140 @@ class QuestionActivity : AppCompatActivity() {
         val adapterComfort = ArrayAdapter(this, R.layout.list_answer, ansComfort)
         binding.answer16.setAdapter(adapterComfort)
 
+        binding.btnSubmitSurvey.setOnClickListener {
+            var genderChoice = binding.answer1.text.toString()
+            when (genderChoice) {
+                "Female" -> genderChoice = 1.toString()
+                "Male" -> genderChoice = 0.toString()
+                "Prefer not to say" -> genderChoice = 2.toString()
+            }
+
+            var ageChoice = binding.answer2.text.toString()
+            when (ageChoice) {
+                "No" -> ageChoice = 0.toString()
+                "Yes" -> ageChoice = 1.toString()
+            }
+
+            var feelChoice = binding.answer3.text.toString()
+            when (feelChoice) {
+                "Fine" -> feelChoice = 0.toString()
+                "Good" -> feelChoice = 1.toString()
+                "Sad" -> feelChoice = 2.toString()
+                "Depressed" -> feelChoice = 3.toString()
+            }
+
+            var sadnessChoice = binding.answer4.text.toString()
+            when (sadnessChoice) {
+                "For some time" -> sadnessChoice = 1.toString()
+                "Significant time" -> sadnessChoice = 2.toString()
+                "Not sad" -> sadnessChoice = 0.toString()
+                "Long time" -> sadnessChoice = 3.toString()
+            }
+
+            var timeChoice = binding.answer5.text.toString()
+            when (timeChoice) {
+                "Evening" -> timeChoice = 2.toString()
+                "Morning" -> timeChoice = 0.toString()
+                "Afternoon" -> timeChoice = 1.toString()
+            }
+
+            var enjoyChoice = binding.answer6.text.toString()
+            when (enjoyChoice) {
+                "Very Often" -> enjoyChoice = 3.toString()
+                "Sometimes" -> enjoyChoice = 1.toString()
+                "Never" -> enjoyChoice = 0.toString()
+                "Often" -> enjoyChoice = 2.toString()
+            }
+
+            val confidentChoice = binding.answer7.text.toString()
+
+            var supportChoice = binding.answer8.text.toString()
+            when (supportChoice) {
+                "Highly supportive" -> supportChoice = 0.toString()
+                "Little bit" -> supportChoice = 2.toString()
+                "Satisfactory" -> supportChoice = 1.toString()
+                "Not at all" -> supportChoice = 3.toString()
+            }
+
+            var frequentChoice = binding.answer9.text.toString()
+            when (frequentChoice) {
+                "Sometimes" -> frequentChoice = 2.toString()
+                "Never" -> frequentChoice = 3.toString()
+                "Often" -> frequentChoice = 1.toString()
+                "Very Often" -> frequentChoice = 0.toString()
+            }
+
+            var medicalChoice = binding.answer10.text.toString()
+            when (medicalChoice) {
+                "Not so easy" -> medicalChoice = 2.toString()
+                "Very easy" -> medicalChoice = 0.toString()
+                "Difficult" -> medicalChoice = 3.toString()
+                "Easy" -> medicalChoice = 1.toString()
+            }
+
+            var substanceChoice = binding.answer11.text.toString()
+            when (substanceChoice) {
+                "Never" -> substanceChoice = 0.toString()
+                "Often" -> substanceChoice = 2.toString()
+                "Sometimes" -> substanceChoice = 1.toString()
+                "Very Often" -> substanceChoice = 3.toString()
+            }
+
+            var watchChoice = binding.answer12.text.toString()
+            when (watchChoice) {
+                "2 to 5 hours" -> watchChoice = 1.toString()
+                "More than 10 hours" -> watchChoice = 3.toString()
+                "5 to 10 hours" -> watchChoice = 2.toString()
+                "1 to 2 hours" -> watchChoice = 0.toString()
+            }
+
+            val appointChoice = binding.answer13.text.toString()
+
+            var offendChoice = binding.answer14.text.toString()
+            when (offendChoice) {
+                "1" -> offendChoice = 1.toString()
+                "2" -> offendChoice = 2.toString()
+                "3" -> offendChoice = 3.toString()
+                "4" -> offendChoice = 0.toString()
+            }
+
+            val aloneChoice = binding.answer15.text.toString()
+            val comfortChoice = binding.answer16.text.toString()
+
+            val data = MentalHealthData(
+                genderChoice,
+                ageChoice,
+                feelChoice,
+                sadnessChoice,
+                timeChoice,
+                enjoyChoice,
+                confidentChoice,
+                supportChoice,
+                frequentChoice,
+                medicalChoice,
+                substanceChoice,
+                watchChoice,
+                appointChoice,
+                offendChoice,
+                aloneChoice,
+                comfortChoice,
+            )
+
+            viewModel.setQuestion(data)
+            viewModel.updateSuccessfulValue(false)
+            viewModel.isSuccessful.observe(this) {
+                if (it) {
+                    viewModel.response.observe(this) {
+                        val response = it
+                        val intent = Intent(this, QuestionResultActivity::class.java)
+                        intent.putExtra("mentalHealthStatus", response)
+                        startActivity(intent)
+                    }
+                    viewModel.updateSuccessfulValue(false)
+                } else {
+//                    Toast.makeText(this, "Something went wrong, please try again!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }
