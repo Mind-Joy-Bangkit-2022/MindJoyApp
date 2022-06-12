@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.databinding.ActivityCameraResultBinding
@@ -24,10 +25,7 @@ class CameraResultActivity : AppCompatActivity() {
     private var getFile: File? = null
     private var result: Bitmap? = null
 
-//    private var expressionStatus: String? = null
-
     private lateinit var viewModel: CameraResultViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +46,6 @@ class CameraResultActivity : AppCompatActivity() {
             setImageFromCamera()
         }
 
-//        setImageFromCamera()
-////        setImageFromGallery()
-
         binding.btnRetake.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
@@ -59,14 +54,19 @@ class CameraResultActivity : AppCompatActivity() {
 
         binding.btnDetect.setOnClickListener {
             uploadImage()
-            viewModel.response.observe(this) {
-                val expressionStatus = it
-                val intent = Intent(this, ExpressionResultActivity::class.java)
-                intent.putExtra("expressionStatus", expressionStatus)
-                startActivity(intent)
+            viewModel.isFailed.observe(this) { failed ->
+                if (!failed) {
+                    viewModel.response.observe(this) {
+                        val expressionStatus = it
+                        val intent = Intent(this, ExpressionResultActivity::class.java)
+                        intent.putExtra("expressionStatus", expressionStatus)
+                        startActivity(intent)
+                    }
+                    viewModel.updateSuccessfulValue(false)
+                } else {
+                    Toast.makeText(this, "Failed to upload, please try again!", Toast.LENGTH_SHORT).show()
+                }
             }
-//            moveToResult()
-            viewModel.updateSuccessfulValue(false)
         }
 
         viewModel.isLoading.observe(this)
@@ -129,12 +129,6 @@ class CameraResultActivity : AppCompatActivity() {
 
         viewModel.setExpression(imageMultipart)
     }
-
-//    private fun moveToResult() {
-//        val intent = Intent(this, ExpressionResultActivity::class.java)
-//        intent.putExtra("expressionStatus", expressionStatus)
-//        startActivity(intent)
-//    }
 
     private fun reduceFileImage(file: File): File {
         val bitmap = BitmapFactory.decodeFile(file.path)

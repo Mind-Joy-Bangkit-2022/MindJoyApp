@@ -13,7 +13,6 @@ import com.example.mindjoy.customview.ClearImgEditText
 import com.example.mindjoy.customview.PasswordEditText
 import com.example.mindjoy.databinding.ActivityRegisterBinding
 import com.example.mindjoy.network.RegisterUser
-import com.example.mindjoy.ui.helper.Session
 import com.example.mindjoy.ui.login.LoginActivity
 import com.example.mindjoy.ui.viewmodel.RegisterViewModel
 
