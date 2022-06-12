@@ -16,6 +16,7 @@ import com.example.mindjoy.R
 import com.example.mindjoy.databinding.FragmentSettingsBinding
 import com.example.mindjoy.ui.aboutus.AboutUsFragment
 import com.example.mindjoy.ui.helper.Session
+import com.example.mindjoy.ui.helper.UserDataPreferences
 import com.example.mindjoy.ui.login.LoginActivity
 import com.example.mindjoy.ui.splashscreen.dataStore
 import com.example.mindjoy.ui.viewmodel.SharedViewModel
@@ -26,6 +27,7 @@ class SettingsFragment : Fragment() {
     private val aboutUsFragment = AboutUsFragment()
 
     private lateinit var session: Session
+    private lateinit var userPref: UserDataPreferences
 
     private val viewModel: SharedViewModel by activityViewModels()
 
@@ -39,6 +41,7 @@ class SettingsFragment : Fragment() {
             ViewModelProvider(this, SettingViewModelFactory(pref)).get(SettingViewModel::class.java)
 
         session = Session(requireContext().applicationContext)
+        userPref = UserDataPreferences(requireContext().applicationContext)
 
         viewModelSetting.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
             if (isDarkModeActive) {
@@ -86,6 +89,7 @@ class SettingsFragment : Fragment() {
             .setMessage("Are you sure want to log out?")
             .setPositiveButton("Yes") { _, _ ->
                 session.saveLogin(false)
+                userPref.deleteData(true)
                 Intent(activity, LoginActivity::class.java).also {
                     activity?.startActivity(it)
                 }

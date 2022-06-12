@@ -43,4 +43,10 @@ class UserDataPreferences(context: Context) {
     fun getMentalHealth(): String? {
         return preferences.getString(MENTAL_HEALTH, "-")
     }
+
+    fun deleteData(state: Boolean) {
+        val editor = preferences.edit()
+        editor.clear()
+        editor.apply()
+    }
 }
