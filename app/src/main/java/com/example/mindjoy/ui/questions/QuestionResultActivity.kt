@@ -1,9 +1,11 @@
 package com.example.mindjoy.ui.questions
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.ActivityQuestionResultBinding
+import com.example.mindjoy.ui.MainActivity
 import com.example.mindjoy.ui.helper.UserDataPreferences
 import com.example.mindjoy.ui.viewmodel.QuestionViewModel
 
@@ -23,15 +25,30 @@ class QuestionResultActivity : AppCompatActivity() {
 
         binding.mentalHealthQuotes.text = randomQuote()
 
+        binding.btnDetectAgain.setOnClickListener {
+            val intent = Intent(this, QuestionActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.btnBackToHomeMentalHealth.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
+        }
+
         when (status) {
             "Tidak Butuh Penanganan" -> {
                 binding.mentalHealthEmoticon.setImageResource(R.drawable.happy_face)
                 userPref.saveMentalHealth("Good")
+                binding.mentalHealthDescription.text = "Based on the results of the mental health screening, your condition is currently relatively stable. Take care of your mental health."
             }
             "Butuh Penanganan" -> {
                 binding.mentalHealthEmoticon.setImageResource(R.drawable.sad_face)
                 binding.mentalHealthStatus.text = "Depressed"
                 userPref.saveMentalHealth("Depressed")
+                binding.mentalHealthDescription.text = "Based on the results of mental health screening, it shows symptoms of psychological problems that are currently troubling. We highly recommend that you see the nearest psychologist or psychiatrist in your city. Especially if what you feel has interfered with your productivity and daily life. But there's no need to worry, as long as you have the intention and commitment to get professional help, it can change your condition."
             }
         }
     }

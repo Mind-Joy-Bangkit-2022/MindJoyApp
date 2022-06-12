@@ -60,6 +60,7 @@ class CameraResultActivity : AppCompatActivity() {
                         val expressionStatus = it
                         val intent = Intent(this, ExpressionResultActivity::class.java)
                         intent.putExtra("expressionStatus", expressionStatus)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                         startActivity(intent)
                     }
                     viewModel.updateSuccessfulValue(false)
