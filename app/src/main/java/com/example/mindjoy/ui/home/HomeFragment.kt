@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.FragmentHomeBinding
 import com.example.mindjoy.ui.camera.CameraActivity
-import com.example.mindjoy.ui.helper.Session
 import com.example.mindjoy.ui.helper.UserDataPreferences
 import com.example.mindjoy.ui.questions.QuestionActivity
 import com.example.mindjoy.ui.viewmodel.SharedViewModel

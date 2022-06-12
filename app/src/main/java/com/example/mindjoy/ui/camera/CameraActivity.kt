@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat
 import com.example.mindjoy.databinding.ActivityCameraBinding
 import com.example.mindjoy.databinding.ActivityCameraResultBinding
 import com.example.mindjoy.ui.helper.createFile
-import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

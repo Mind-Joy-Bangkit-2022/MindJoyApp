@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.mindjoy.R
@@ -16,10 +15,8 @@ import com.example.mindjoy.network.LoginUser
 import com.example.mindjoy.ui.MainActivity
 import com.example.mindjoy.ui.helper.Session
 import com.example.mindjoy.ui.helper.UserDataPreferences
-import com.example.mindjoy.ui.home.HomeFragment
 import com.example.mindjoy.ui.register.RegisterActivity
 import com.example.mindjoy.ui.viewmodel.LoginViewModel
-import com.example.mindjoy.ui.viewmodel.SharedViewModel
 
 class LoginActivity : AppCompatActivity() {
 

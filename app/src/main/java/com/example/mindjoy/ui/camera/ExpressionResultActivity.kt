@@ -2,16 +2,12 @@ package com.example.mindjoy.ui.camera
 
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mindjoy.R
 import com.example.mindjoy.databinding.ActivityExpressionResultBinding
 import com.example.mindjoy.ui.MainActivity
-import com.example.mindjoy.ui.helper.Session
 import com.example.mindjoy.ui.helper.UserDataPreferences
-import com.example.mindjoy.ui.viewmodel.SharedViewModel
-import kotlin.random.Random
 
 class ExpressionResultActivity : AppCompatActivity() {
 
