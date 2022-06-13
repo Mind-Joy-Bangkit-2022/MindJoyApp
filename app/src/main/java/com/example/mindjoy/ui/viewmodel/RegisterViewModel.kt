@@ -25,7 +25,7 @@ class RegisterViewModel: ViewModel() {
         client.enqueue(object : retrofit2.Callback<RegisterUserResponse> {
             override fun onResponse(call: Call<RegisterUserResponse>, response: Response<RegisterUserResponse>) {
                 if (response.isSuccessful){
-                    _isSuccessful.value = true
+                      _isSuccessful.value = true
                     _isLoading.value = false
                 } else {
                     _isSuccessful.value = false
