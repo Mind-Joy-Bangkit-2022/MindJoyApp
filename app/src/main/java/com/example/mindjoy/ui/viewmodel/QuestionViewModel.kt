@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.mindjoy.network.*
 import retrofit2.Call
 import retrofit2.Response
+import java.net.SocketTimeoutException
 
 class QuestionViewModel : ViewModel() {
 
